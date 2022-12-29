@@ -1,0 +1,111 @@
+//IMPORTING BOOTSTRAP
+@import "~bootstrap/scss/bootstrap.scss";
+
+@import "./abstracts/variables";
+@import "./navbar";
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-color);
+  width: 100%;
+  //font-family: 'Lora', serif;
+  font-family: 'Inconsolata', monospace;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rem;
+  width: 100%;
+
+  .left-component {
+    position: fixed;
+    height: 85%;
+    min-width: 12rem;
+    margin: 1rem;
+
+    .nav {
+      .nav-item {
+        font-size: large;
+
+        .nav-link.active{
+          background-color: #191970;
+        }
+      }
+    }
+  }
+
+  .page-1 {
+    margin-left: 13rem;
+
+    @media (max-width: 767.98px) {
+      margin-left: 0px;
+    }
+    .middle-component {
+      max-width: 900px;
+      @media (max-width: 767.98px) {
+        min-width: 400px;
+      }
+      .middle-card {
+        border-color: var(--border-color);
+
+        .cards {
+          border-color: var(--border-color);
+
+          @media (max-width: 767.98px) {
+            min-height: 400px;
+          }
+
+          .card-body {
+            @media (max-width: 767.98px) {
+              flex-direction: column;
+            }
+          }
+
+          .card-img {
+            width: auto;
+            img {
+              height: 150px;
+              width: 250px;
+              border-radius: 1rem;
+              object-fit: cover;
+              @media (max-width: 767.98px) {
+                margin-left: 5rem;
+
+              }
+            }
+          }
+        }
+      }
+    }
+    .right-component {
+      position: relative;
+      max-width: 500px;
+      min-width: 200px;
+
+      @media (max-width: 767.98px) {
+        position: relative;
+        display: none;
+        visibility: hidden;
+      }
+
+
+      .right-section {
+        border-color: var(--border-color);
+        overflow: auto;
+
+        .cards {
+        }
+      }
+    }
+
+
+  }
+}
