@@ -1,55 +1,50 @@
-"strict-mode";
+"use  strict"
 
-// Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
 
-import carouselHtml from "./components/carousel.component";
 import cardHtml from "./components/bottom-cards.component";
 import sideCardlHtml from "./components/side-cards.componenr";
 
-/*
-const loadNews = async function (topic) {
-  const response = await fetch(
-    `https://newsapi.org/v2/everything?q=${topic}&sortBy=popularity&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c`
-  );
-  const data = await response.json();
-  console.log(data);
-};
-loadNews("india");
-*/
-
+//Importing Elements from Html
 const bottomCards = document.querySelector(".middle-card");
 const rightCards = document.querySelector(".right-section");
 
+//searchbar elements
+const searchBar = document.querySelector('.form-control')
+const submitBtn = document.querySelector('.btn-submit')
+
+
 //side nav buttons
-const allNav = document.querySelectorAll(".nav-link");
-const india = document.querySelector(".india");
 const home = document.querySelector(".home");
-const politics = document.querySelector(".politics");
+const business = document.querySelector(".business");
 const sports = document.querySelector(".sports");
-const market = document.querySelector(".market");
+const technology = document.querySelector(".technology");
+const health = document.querySelector(".health");
+const entertainment = document.querySelector(".entertainment");
+
+
 
 class App {
   article = [];
+  searchArt = [];
   recentArticle = [];
   // indianArticles = [];
-  btn = [home, politics, sports, market];
+  btn = [home, business, sports, technology, health,entertainment];
 
   constructor() {
     //RENDER PAGE
-    // this._dataFromApi("india");
     this._renderArticlesHome();
     this._renderArticlesLatest();
+    submitBtn.addEventListener("click", this._renderSearchResults.bind(this));
+
+    //click events for side nav buttons
     home.addEventListener("click", this._renderArticlesHome.bind(this));
-
-    politics.addEventListener(
-      "click",
-      this._renderPoliticalArticles.bind(this)
+    business.addEventListener("click", this._renderBusinessArticles.bind(this)
     );
-
     sports.addEventListener("click", this._renderSportsArticles.bind(this));
-
-    market.addEventListener("click", this._renderMarketArticles.bind(this));
+    technology.addEventListener("click", this._renderTechnologyArticles.bind(this));
+    health.addEventListener("click", this._renderHealthArticles.bind(this));
+    entertainment.addEventListener("click", this._renderEntertainmentArticles.bind(this));
   }
 
   _removeActiveClass() {
@@ -61,13 +56,35 @@ class App {
     });
   }
 
+  async _renderSearchResults(){
+    this._removeActiveClass();
+    const searchStr = searchBar.value;
+
+    console.log(searchStr)
+    try {
+      const response = await fetch(
+          `https://newsapi.org/v2/top-headlines?q=${searchStr}&sortBy=relevancy&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c`
+
+      );
+      const data = await response.json();
+      this.searchArt = data.articles
+
+      this.searchArt.map((arts, i) => {
+        bottomCards.insertAdjacentHTML("afterbegin", cardHtml(arts, i));
+      });
+    } catch (error) {
+      alert(error);
+    }
+
+  }
+
   async _renderArticlesHome() {
     this._removeActiveClass();
     home.classList.add("active");
 
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/top-headlines?country=in&language=en&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+        "https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
       );
       const data = await response.json();
       this.article = data.articles.sort(() => Math.random() - 0.5);
@@ -80,10 +97,10 @@ class App {
     }
   }
 
-  async _renderArticlesLatest(country, sort, category) {
+  async _renderArticlesLatest(india) {
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/top-headlines?country=in&language=en&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+        `https://newsapi.org/v2/everything?q=${india}&sortBy=publishedAt&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c`
       );
       const data = await response.json();
       this.recentArticle = data.articles;
@@ -99,14 +116,14 @@ class App {
     }
   }
 
-  async _renderIndianArticles() {
+  async _renderBusinessArticles() {
     this._removeActiveClass();
-    india.classList.add("active");
+    business.classList.add("active");
     bottomCards.innerHTML = "";
 
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/top-headlines?country=in&language=en&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+          "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
       );
       const data = await response.json();
       this.article = data.articles.sort(() => Math.random() - 0.5);
@@ -119,25 +136,6 @@ class App {
     }
   }
 
-  async _renderPoliticalArticles() {
-    this._removeActiveClass();
-    politics.classList.add("active");
-    bottomCards.innerHTML = "";
-
-    try {
-      const response = await fetch(
-        "https://newsapi.org/v2/everything?q=political&sortBy=popularity&language=en&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
-      );
-      const data = await response.json();
-      this.article = data.articles.sort(() => Math.random() - 0.5);
-
-      return this.article.map((arts, i) => {
-        bottomCards.insertAdjacentHTML("afterbegin", cardHtml(arts, i));
-      });
-    } catch (error) {
-      alert(error);
-    }
-  }
 
   async _renderSportsArticles() {
     this._removeActiveClass();
@@ -146,7 +144,7 @@ class App {
 
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/everything?q=sports&sortBy=popularity&language=en&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+          "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
       );
       const data = await response.json();
       this.article = data.articles.sort(() => Math.random() - 0.5);
@@ -159,14 +157,55 @@ class App {
     }
   }
 
-  async _renderMarketArticles() {
+
+  async _renderTechnologyArticles() {
     this._removeActiveClass();
-    market.classList.add("active");
+    technology.classList.add("active");
     bottomCards.innerHTML = "";
 
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/everything?q=stocks&sortBy=popularity&language=en&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+          "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+      );
+      const data = await response.json();
+      this.article = data.articles.sort(() => Math.random() - 0.5);
+
+      return this.article.map((arts, i) => {
+        bottomCards.insertAdjacentHTML("afterbegin", cardHtml(arts, i));
+      });
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async _renderHealthArticles() {
+    this._removeActiveClass();
+    health.classList.add("active");
+    bottomCards.innerHTML = "";
+
+    try {
+      const response = await fetch(
+          "https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
+      );
+      const data = await response.json();
+      this.article = data.articles.sort(() => Math.random() - 0.5);
+
+      return this.article.map((arts, i) => {
+        bottomCards.insertAdjacentHTML("afterbegin", cardHtml(arts, i));
+      });
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async _renderEntertainmentArticles() {
+    this._removeActiveClass();
+    entertainment.classList.add("active");
+    bottomCards.innerHTML = "";
+
+    try {
+      const response = await fetch(
+          "https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=cbe9fa26f6424df5b56d2a45a19c3e9c"
       );
       const data = await response.json();
       this.article = data.articles.sort(() => Math.random() - 0.5);
