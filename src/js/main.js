@@ -101,7 +101,7 @@ class App {
   async _renderArticlesLatest(india) {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${india}&sortBy=publishedAt&apiKey=${this.apiKey}`
+        `https://newsapi.org/v2/everything?q=${india}&language=en&sortBy=publishedAt&apiKey=${this.apiKey}`
       );
       const data = await response.json();
       this.recentArticle = data.articles;
