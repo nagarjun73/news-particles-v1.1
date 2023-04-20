@@ -108,6 +108,14 @@ main {
         overflow: auto;
 
         .cards {
+          .card-text a {
+            color: black;
+            text-decoration: none;
+          }
+
+          .card-text a:hover {
+            color: #191970;
+          }
         }
       }
     }
