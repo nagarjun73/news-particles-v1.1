@@ -4,8 +4,8 @@
 @import "./abstracts/variables";
 @import "./navbar";
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -17,7 +17,7 @@ body {
   background-color: var(--background-color);
   width: 100%;
   //font-family: 'Lora', serif;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
 }
 main {
   display: flex;
@@ -35,7 +35,7 @@ main {
       .nav-item {
         font-size: large;
 
-        .nav-link.active{
+        .nav-link.active {
           background-color: #191970;
         }
       }
@@ -67,8 +67,16 @@ main {
             @media (max-width: 767.98px) {
               flex-direction: column;
             }
-          }
 
+            .card-title a {
+              color: black;
+              text-decoration: none;
+            }
+
+            .card-title a:hover {
+              color: #191970;
+            }
+          }
           .card-img {
             width: auto;
             img {
@@ -78,7 +86,6 @@ main {
               object-fit: cover;
               @media (max-width: 767.98px) {
                 margin-left: 5rem;
-
               }
             }
           }
@@ -96,7 +103,6 @@ main {
         visibility: hidden;
       }
 
-
       .right-section {
         border-color: var(--border-color);
         overflow: auto;
@@ -105,7 +111,5 @@ main {
         }
       }
     }
-
-
   }
 }
