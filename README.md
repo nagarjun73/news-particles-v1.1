@@ -5,8 +5,6 @@
     <img src="./src/img/logo.PNG" alt="Logo" width="280" height="80">
   </a>
 
-  <h3 align="center">News Particles</h3>
-
   <p align="center">
     A News website shows results based on NewsAPI.
   </p>
