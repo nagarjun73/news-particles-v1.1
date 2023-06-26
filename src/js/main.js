@@ -1,8 +1,8 @@
 "use  strict";
 
+require("dotenv").config();
 import * as bootstrap from "bootstrap";
 
-import apiKey from "../../apiKey";
 import cardHtml from "./components/bottom-cards.component";
 import sideCardlHtml from "./components/side-cards.componenr";
 
@@ -23,7 +23,7 @@ const health = document.querySelector(".health");
 const entertainment = document.querySelector(".entertainment");
 
 class App {
-  apiKey = apiKey;
+  apiKey = process.env.API
   article = [];
   searchArt = [];
   recentArticle = [];
