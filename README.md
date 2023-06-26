@@ -2,13 +2,11 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="./src/img/logo.PNG" alt="Logo" width="220" height="80">
+    <img src="./src/img/logo.PNG" alt="Logo" width="280" height="80">
   </a>
 
-  <h3 align="center">News Particles</h3>
-
   <p align="center">
-    A News website which uses NewsAPI.
+    A News website shows results based on NewsAPI.
   </p>
 </div>
 
@@ -18,16 +16,15 @@
 
 <img src="./src/img/NewsParticlesImg.PNG">
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+News Particles is a news website that shows results based on NewsAPI. All the news can be categorised based on sports, business, markets, and politics. We can search for specific news based on a topic using the search bar. We can read news that is shown on a website from its own source.
 
-Here's why:
+ Skills Used : <p>
+  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
+  <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" />
+</p>
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should implement DRY principles to the rest of your life :smile:
+API : https://newsapi.org/
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+IDE :   <p><img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" /></p>
